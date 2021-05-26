@@ -23,17 +23,44 @@ function playRound (playerSelection, computerSelection)
         playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "ROCK" ||
         playerSelection.toUpperCase() == "SCISSORS" && computerSelection.toUpperCase() == "PAPER")
             {
-                return "You Win! " + playerSelection + " beats " + computerSelection;
+                return "Win";
             }
     else 
         {
-        return "You Lost " + computerSelection + " beats " + playerSelection;
+        return "Lost";
         }
 }
 let computerSelection = computerPlay();
-let playerSelection = "rock";
+//let playerInput = "rock";
 
 function game()
 {
-    
+playerScore = 0;
+computerScore = 0;
+    for (i=0; i <5; i++)
+    {
+        let playerInput = window.prompt("Chose Rock Paper or Scissors");
+        let roundResult = playRound(playerInput,computerPlay());
+        console.log(roundResult);
+        if ( roundResult == "Win")
+        {
+            playerScore += 1;
+        }
+        else if ( roundResult == "Lost")
+        {
+            computerScore += 1;
+        }
+    }
+    if (playerScore > computerScore)
+    {
+        return "Player Win";
+    }
+    else if (playerScore < computerScore)
+    {
+        return "Computer Win";
+    }
+    else 
+    { 
+        return "Draw"
+    }
 }
